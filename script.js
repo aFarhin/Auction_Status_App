@@ -9,11 +9,13 @@ async function getDataFromAPI() {
     arr = await response.json();
     sessionStorage.setItem("StoredArr", JSON.stringify(arr));
     console.log("data", arr);
-    fetchData(arr);
   } catch (error) {
     console.log("Error in fetching", error);
   } finally {
-    document.getElementById("loader").style.display = "none";
+     setTimeout(() => {
+            document.getElementById("loader").style.display = "none";
+            fetchData(arr);
+          }, 1500);
   }
 }
 
